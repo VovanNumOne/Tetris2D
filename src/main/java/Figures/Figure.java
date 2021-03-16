@@ -14,8 +14,6 @@ public abstract class Figure {
     public Figure(JFrame frame){
         this.frame = frame;
     }
-
-
     public void moveLeft() {
         this.hideFigure();
 
@@ -45,11 +43,9 @@ public abstract class Figure {
         this.showFigure();
 
     }
-
     public List<Cells> getFigureCells() {
         return this.figure;
     }
-
     public void showFigure() {
         for (Cells cell:figure) {
             cell.setBounds(cell.getX(),cell.getY(),Config.SIZE-1,Config.SIZE-1);
@@ -66,7 +62,6 @@ public abstract class Figure {
             frame.add(cell);
         }
     }
-
     public void displayNextFigureInfo(JPanel panel){
         for (Cells c: figure) {
             c.setX(c.getX()-Config.SIZE-30);
@@ -83,7 +78,6 @@ public abstract class Figure {
             cell.setOpaque(false);
         }
     }
-
     public int getBottom(){
         int bottom = figure.get(0).getY()+Config.SIZE;
         for (int i = 0; i<figure.size();i++) {
@@ -112,7 +106,6 @@ public abstract class Figure {
         return right;
     }
 
-    public abstract void setColor();
     public abstract void rotateLeftSide();
     public abstract void rotateRightSide();
     public abstract void rotateFigure();

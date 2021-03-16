@@ -7,16 +7,11 @@ public class SForm extends Figure{
     private boolean state = true;
     public SForm(JFrame frame){
         super(frame);
-        setColor();
+        this.color = Color.CYAN;
         figure.add(new Cells(0,1,color));
         figure.add(new Cells(1,1,color));
         figure.add(new Cells(1,0,color));
         figure.add(new Cells(2,0,color));
-    }
-
-    @Override
-    public void setColor() {
-        this.color = Color.CYAN;
     }
 
     @Override
@@ -26,6 +21,9 @@ public class SForm extends Figure{
 
     @Override
     public void rotateRightSide() {
+        if(state == false){
+            this.moveLeft();
+        }
         this.rotateFigure();
     }
 
@@ -47,11 +45,6 @@ public class SForm extends Figure{
             figure.get(3).setY(figure.get(3).getY()+2*Config.SIZE);
         }else{
 
-            if(this.getRight()+20>=Config.SIZE*Config.WEIGHT) {
-                for (Cells cell : figure) {
-                    cell.setX(cell.getX() - Config.SIZE);
-                }
-            }
             figure.get(0).setX(figure.get(0).getX());
             figure.get(0).setY(figure.get(0).getY() + Config.SIZE);
 

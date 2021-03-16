@@ -7,16 +7,11 @@ public class ZForm extends Figure{
     private boolean state = true;
     public ZForm(JFrame frame){
         super(frame);
-        setColor();
+        this.color = Color.orange;
         figure.add(new Cells(0,0,color));
         figure.add(new Cells(1,0,color));
         figure.add(new Cells(1,1,color));
         figure.add(new Cells(2,1,color));
-    }
-
-    @Override
-    public void setColor() {
-        this.color = Color.orange;
     }
 
     @Override
@@ -26,6 +21,9 @@ public class ZForm extends Figure{
 
     @Override
     public void rotateRightSide() {
+        if(state == false){
+            this.moveLeft();
+        }
         this.rotateFigure();
     }
 
@@ -46,11 +44,6 @@ public class ZForm extends Figure{
             figure.get(3).setX(figure.get(3).getX()-2*Config.SIZE);
             figure.get(3).setY(figure.get(3).getY()+Config.SIZE);
         }else{
-            if(this.getRight()+20>=Config.SIZE*Config.WEIGHT) {
-                for (Cells cell : figure) {
-                    cell.setX(cell.getX() - Config.SIZE);
-                }
-            }
             figure.get(0).setX(figure.get(0).getX() - Config.SIZE);
             figure.get(0).setY(figure.get(0).getY());
 

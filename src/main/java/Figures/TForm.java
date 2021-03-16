@@ -7,25 +7,27 @@ public class TForm extends Figure{
     private int state = 0;
     public TForm(JFrame frame){
         super(frame);
-        setColor();
+        this.color = Color.GREEN;
         figure.add(new Cells(0,1,color));
         figure.add(new Cells(1,1,color));
         figure.add(new Cells(1,0,color));
         figure.add(new Cells(2,1,color));
     }
 
-    @Override
-    public void setColor() {
-        this.color = Color.GREEN;
-    }
 
     @Override
     public void rotateLeftSide() {
+        if(state == 1){
+            this.moveRight();
+        }
         this.rotateFigure();
     }
 
     @Override
     public void rotateRightSide() {
+        if(state == 3){
+            this.moveLeft();
+        }
         this.rotateFigure();
     }
 
@@ -47,11 +49,6 @@ public class TForm extends Figure{
             figure.get(3).setY(figure.get(3).getY()+Config.SIZE);
 
         }else if(state == 1){
-            if(this.getLeft()<=10){
-                for (Cells cell:figure) {
-                    cell.setX(cell.getX()+Config.SIZE);
-                }
-            }
             figure.get(0).setX(figure.get(0).getX()+Config.SIZE);
             figure.get(0).setY(figure.get(0).getY()+Config.SIZE);
 
@@ -78,11 +75,6 @@ public class TForm extends Figure{
             figure.get(3).setY(figure.get(3).getY()-Config.SIZE);
 
         }else if(state == 3){
-            if(this.getRight()+20>Config.SIZE*Config.WEIGHT){
-                for (Cells cell:figure) {
-                    cell.setX(cell.getX()-Config.SIZE);
-                }
-            }
             figure.get(0).setX(figure.get(0).getX()-Config.SIZE);
             figure.get(0).setY(figure.get(0).getY()-Config.SIZE);
 
