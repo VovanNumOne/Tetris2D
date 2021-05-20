@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Window implements ActionListener{
 
@@ -39,7 +40,6 @@ public class Window implements ActionListener{
         formGameWindow();
         initGame();
     }
-
     public void formGameWindow(){
         frame.setSize(Config.SIZE*Config.WEIGHT+13+250, Config.SIZE*Config.HEIGHT+35);
         frame.setLayout(null);
@@ -91,7 +91,6 @@ public class Window implements ActionListener{
 
         frame.setVisible(true);
     }
-
     public void initGame(){
         timer = new Timer(500,this);
         timer.start();
@@ -135,7 +134,6 @@ public class Window implements ActionListener{
     public boolean canMoveDown(){
         return !((figure.getBottom() + 20 >= Config.SIZE * Config.HEIGHT) || checkContactWithFigures()[2]);
     }
-
     public void pauseGame(){
         firstPauseBar.setOpaque(gameInProcess);
         secondPauseBar.setOpaque(gameInProcess);
@@ -149,12 +147,9 @@ public class Window implements ActionListener{
         frame.repaint();
         gameInProcess = !gameInProcess;
     }
-
     public void addFigureToList(Figure figure){
-        for (Cells c: figure.getFigureCells())
-            cellsList.add(c);
+        cellsList.addAll(figure.getFigureCells());
     }
-
     public void checkLines(){
         Stack<Integer> linesForDelete= new Stack<>();
         for(int level = Config.HEIGHT; level>=0; level--){
@@ -174,7 +169,6 @@ public class Window implements ActionListener{
             deleteLine(linesForDelete);
         }
     }
-
     public void deleteLine(Stack<Integer> linesForDelete){
         int sizeOfStack = linesForDelete.size();
         for (int i = 0; i<sizeOfStack; i++) {

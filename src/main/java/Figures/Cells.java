@@ -1,10 +1,19 @@
 package Figures;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Cells extends JPanel {
+
+    @Getter
+    @Setter
     private int x;
+
+    @Getter
+    @Setter
     private int y;
     private Color color;
 
@@ -17,19 +26,5 @@ public class Cells extends JPanel {
     public void setCellColor(Color color){
         this.setBackground(color);
     }
-    public int getX() {
-        return x;
-    }
 
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 }

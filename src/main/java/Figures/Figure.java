@@ -3,6 +3,7 @@ package Figures;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class Figure {
@@ -79,31 +80,17 @@ public abstract class Figure {
         }
     }
     public int getBottom(){
-        int bottom = figure.get(0).getY()+Config.SIZE;
-        for (int i = 0; i<figure.size();i++) {
-            if(figure.get(i).getY()+Config.SIZE>=bottom){
-                bottom = figure.get(i).getY()+Config.SIZE;
-            }
-        }
-        return bottom;
+        Cells bot = figure.stream().max(Comparator.comparing(Cells::getY)).orElse(null);
+        return bot.getY()+Config.SIZE;
+
     }
     public int getLeft(){
-        int left = figure.get(0).getX();
-        for(int i = 0; i<figure.size();i++){
-            if(figure.get(i).getX() <=left){
-                left = figure.get(i).getX();
-            }
-        }
-        return left;
+        Cells left= figure.stream().min(Comparator.comparing(Cells::getX)).orElse(null);
+        return left.getX();
     }
     public int getRight(){
-        int right = figure.get(0).getX()+Config.SIZE;
-        for(int i = 0; i<figure.size();i++){
-            if(figure.get(i).getX()+Config.SIZE >= right){
-                right = figure.get(i).getX()+Config.SIZE;
-            }
-        }
-        return right;
+        Cells right = figure.stream().max(Comparator.comparing(Cells::getX)).orElse(null);
+        return right.getX()+Config.SIZE;
     }
 
     public abstract void rotateLeftSide();

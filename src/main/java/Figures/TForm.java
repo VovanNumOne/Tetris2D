@@ -35,59 +35,48 @@ public class TForm extends Figure{
     public void rotateFigure() {
         this.hideFigure();
 
-        if(state == 0){
-            figure.get(0).setX(figure.get(0).getX()+Config.SIZE);
-            figure.get(0).setY(figure.get(0).getY()-Config.SIZE);
-
-            figure.get(1).setX(figure.get(1).getX());
-            figure.get(1).setY(figure.get(1).getY());
-
-            figure.get(2).setX(figure.get(2).getX()+Config.SIZE);
-            figure.get(2).setY(figure.get(2).getY()+Config.SIZE);
-
-            figure.get(3).setX(figure.get(3).getX()-Config.SIZE);
-            figure.get(3).setY(figure.get(3).getY()+Config.SIZE);
-
-        }else if(state == 1){
-            figure.get(0).setX(figure.get(0).getX()+Config.SIZE);
-            figure.get(0).setY(figure.get(0).getY()+Config.SIZE);
-
-            figure.get(1).setX(figure.get(1).getX());
-            figure.get(1).setY(figure.get(1).getY());
-
-            figure.get(2).setX(figure.get(2).getX()-Config.SIZE);
-            figure.get(2).setY(figure.get(2).getY()+Config.SIZE);
-
-            figure.get(3).setX(figure.get(3).getX()-Config.SIZE);
-            figure.get(3).setY(figure.get(3).getY()-Config.SIZE);
-
-        }else if(state == 2){
-            figure.get(0).setX(figure.get(0).getX()-Config.SIZE);
-            figure.get(0).setY(figure.get(0).getY()+Config.SIZE);
-
-            figure.get(1).setX(figure.get(1).getX());
-            figure.get(1).setY(figure.get(1).getY());
-
-            figure.get(2).setX(figure.get(2).getX()-Config.SIZE);
-            figure.get(2).setY(figure.get(2).getY()-Config.SIZE);
-
-            figure.get(3).setX(figure.get(3).getX()+Config.SIZE);
-            figure.get(3).setY(figure.get(3).getY()-Config.SIZE);
-
-        }else if(state == 3){
-            figure.get(0).setX(figure.get(0).getX()-Config.SIZE);
-            figure.get(0).setY(figure.get(0).getY()-Config.SIZE);
-
-            figure.get(1).setX(figure.get(1).getX());
-            figure.get(1).setY(figure.get(1).getY());
-
-            figure.get(2).setX(figure.get(2).getX()+Config.SIZE);
-            figure.get(2).setY(figure.get(2).getY()-Config.SIZE);
-
-            figure.get(3).setX(figure.get(3).getX()+Config.SIZE);
-            figure.get(3).setY(figure.get(3).getY()+Config.SIZE);
-
-            state = -1;
+        switch (state) {
+            case 0 -> {
+                figure.get(0).setX(figure.get(0).getX() + Config.SIZE);
+                figure.get(0).setY(figure.get(0).getY() - Config.SIZE);
+                figure.get(1).setX(figure.get(1).getX());
+                figure.get(1).setY(figure.get(1).getY());
+                figure.get(2).setX(figure.get(2).getX() + Config.SIZE);
+                figure.get(2).setY(figure.get(2).getY() + Config.SIZE);
+                figure.get(3).setX(figure.get(3).getX() - Config.SIZE);
+                figure.get(3).setY(figure.get(3).getY() + Config.SIZE);
+            }
+            case 1 -> {
+                figure.get(0).setX(figure.get(0).getX() + Config.SIZE);
+                figure.get(0).setY(figure.get(0).getY() + Config.SIZE);
+                figure.get(1).setX(figure.get(1).getX());
+                figure.get(1).setY(figure.get(1).getY());
+                figure.get(2).setX(figure.get(2).getX() - Config.SIZE);
+                figure.get(2).setY(figure.get(2).getY() + Config.SIZE);
+                figure.get(3).setX(figure.get(3).getX() - Config.SIZE);
+                figure.get(3).setY(figure.get(3).getY() - Config.SIZE);
+            }
+            case 2 -> {
+                figure.get(0).setX(figure.get(0).getX() - Config.SIZE);
+                figure.get(0).setY(figure.get(0).getY() + Config.SIZE);
+                figure.get(1).setX(figure.get(1).getX());
+                figure.get(1).setY(figure.get(1).getY());
+                figure.get(2).setX(figure.get(2).getX() - Config.SIZE);
+                figure.get(2).setY(figure.get(2).getY() - Config.SIZE);
+                figure.get(3).setX(figure.get(3).getX() + Config.SIZE);
+                figure.get(3).setY(figure.get(3).getY() - Config.SIZE);
+            }
+            case 3 -> {
+                figure.get(0).setX(figure.get(0).getX() - Config.SIZE);
+                figure.get(0).setY(figure.get(0).getY() - Config.SIZE);
+                figure.get(1).setX(figure.get(1).getX());
+                figure.get(1).setY(figure.get(1).getY());
+                figure.get(2).setX(figure.get(2).getX() + Config.SIZE);
+                figure.get(2).setY(figure.get(2).getY() - Config.SIZE);
+                figure.get(3).setX(figure.get(3).getX() + Config.SIZE);
+                figure.get(3).setY(figure.get(3).getY() + Config.SIZE);
+                state = -1;
+            }
         }
 
         state = state+1;
